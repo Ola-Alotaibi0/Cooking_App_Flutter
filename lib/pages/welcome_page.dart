@@ -22,8 +22,7 @@ class _WelcomePageState extends State<WelcomePage> {
     {
       'Topic1': "Learn",
       'Topic2': "to cook",
-      'Topic3':
-          "Learn to cook easily and quickly with the varieties easily using your phone",
+      'Topic3': "Learn to cook easily and quickly with the varieties easily using your phone",
     },
     {
       'Topic1': "Make",
