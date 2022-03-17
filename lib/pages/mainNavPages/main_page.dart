@@ -1,6 +1,6 @@
 import 'package:cooking_app/component/colors.dart';
 import 'package:cooking_app/pages/mainNavPages/basket_page.dart';
-import 'package:cooking_app/pages/mainNavPages/home_page.dart';
+import 'package:cooking_app/pages/home_page.dart';
 import 'package:cooking_app/pages/mainNavPages/save_page.dart';
 import 'package:cooking_app/pages/mainNavPages/search_page.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +47,7 @@ class _MainPageState extends State<MainPage> {
           BottomNavigationBarItem(title: Text("Home"),icon: Icon(Icons.home,)),
           BottomNavigationBarItem(title: Text("Search"),icon: Icon(Icons.search,)),
           BottomNavigationBarItem(title: Text("Basket"),icon: Icon(Icons.shopping_basket_outlined,)),
-          BottomNavigationBarItem(title: Text("Save"),icon: Icon(Icons.bookmark_border_outlined,))
+          BottomNavigationBarItem(title: Text("Save"),icon: Icon(Icons.bookmark_outline_sharp,))
         ],
       ),
     );

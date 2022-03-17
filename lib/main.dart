@@ -1,3 +1,4 @@
+import 'package:cooking_app/pages/detail_page.dart';
 import 'package:cooking_app/pages/mainNavPages/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cooking_app/pages/welcome_page.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
       ),
-      home: MainPage(),
+      home: DetailPage(),
     );
   }
 }
