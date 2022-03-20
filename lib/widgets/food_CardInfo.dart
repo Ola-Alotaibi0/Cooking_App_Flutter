@@ -45,8 +45,10 @@ class FoodCardInfo extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Stack(
+        overflow: Overflow.clip,
+        /*fit: StackFit.loose,
+        clipBehavior: Clip.hardEdge,*/
         children: [
-
           Positioned(
             top: -10,
             left: 20,
@@ -56,9 +58,9 @@ class FoodCardInfo extends StatelessWidget {
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black12,//if
-                    spreadRadius: 10,
-                    blurRadius: 15,
+                    color: Colors.black12,
+                    spreadRadius: 8,
+                    blurRadius: 10,
                   ),
                 ],
                 borderRadius: BorderRadius.circular(200),
@@ -67,6 +69,7 @@ class FoodCardInfo extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
+
             ),
           ),
 

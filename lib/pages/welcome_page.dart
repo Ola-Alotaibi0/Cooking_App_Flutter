@@ -1,9 +1,11 @@
 import 'package:cooking_app/component/colors.dart';
+import 'package:cooking_app/cubit/cubits.dart';
 import 'package:cooking_app/widgets/app_large_text.dart';
 import 'package:cooking_app/widgets/app_text.dart';
 import 'package:cooking_app/widgets/button.dart';
 import 'package:cooking_app/widgets/slider_dots.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -63,12 +65,12 @@ class _WelcomePageState extends State<WelcomePage> {
                             children: [
                               AppLargeText(
                                 text: text[index]['Topic1'],
-                                size: 35,
+                                size: 40,
                                 color: AppColors.colorWhite,
                               ),
                               AppLargeText(
                                 text: text[index]['Topic2'],
-                                size: 35,
+                                size: 40,
                                 color: AppColors.colorWhite,
                               ),
                               Container(
@@ -104,9 +106,14 @@ class _WelcomePageState extends State<WelcomePage> {
                   );
                 }),
           ),
-          Button(
-            size: size,
-            textButton: "Get started",
+          GestureDetector(
+            onTap: (){
+              BlocProvider.of<Cubits>(context).getHome();
+            },
+            child: Button(
+              size: size,
+              textButton: "Get started",
+            ),
           ),
         ],
       ),

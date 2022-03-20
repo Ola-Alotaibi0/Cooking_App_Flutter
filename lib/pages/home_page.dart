@@ -1,9 +1,11 @@
 import 'package:cooking_app/component/colors.dart';
+import 'package:cooking_app/cubit/cubits.dart';
 import 'package:cooking_app/widgets/app_large_text.dart';
 import 'package:cooking_app/widgets/app_text.dart';
 import 'package:cooking_app/widgets/food_CardInfo.dart';
 import 'package:cooking_app/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,12 +17,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List foodInfo = [
     {
-      "image": "images/foodImg/food1.jpg",
+      "image": "images/foodImg/food2.jpg",
       "foodText": "Salmon with couscous",
       "time": "20 min",
     },
     {
-      "image": "images/foodImg/food2.jpg",
+      "image": "images/foodImg/food1.jpg",
       "foodText": "Ramen with shrimp",
       "time": "20 min",
     },
@@ -76,11 +78,16 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 itemCount: foodInfo.length,
                 itemBuilder: (context, index){
-                return FoodCardInfo(
-                  image: foodInfo[index]["image"],
-                  foodText: foodInfo[index]["foodText"],
-                  time: foodInfo[index]["time"],
-                  verify_whichCard: verify_whichCard == false ? verify_whichCard = true : verify_whichCard = false,
+                return GestureDetector(
+                  onTap: (){
+                    BlocProvider.of<Cubits>(context).getDetail();
+                  },
+                  child: FoodCardInfo(
+                    image: foodInfo[index]["image"],
+                    foodText: foodInfo[index]["foodText"],
+                    time: foodInfo[index]["time"],
+                    verify_whichCard: verify_whichCard == false ? verify_whichCard = true : verify_whichCard = false,
+                  ),
                 );
                 }
               ),
