@@ -22,12 +22,13 @@ class _CubitBlocBuilderState extends State<CubitBlocBuilder> {
           builder: (context, state){
             if(state is WelcomeState){
               return WelcomePage();
-            }if(state is MainNavPageState){
+            }if(state is LoadingState){
+              return Center(child: CircularProgressIndicator(),);
+            }if(state is LoadedState){
               return MainPage();
             }if(state is DetailState){
               return DetailPage();
-            }
-            else{
+            }else{
               return Container();
             }
           },

@@ -9,18 +9,20 @@ class FoodCardInfo extends StatelessWidget {
     Key? key,
     required this.image,
     required this.foodText,
-    required this.time,
-    required this.verify_whichCard,
+    required this.kCal,
+    required this.backgroundColor,
+    this.textColor = Colors.white,
+    //required this.verify_whichCard,
   }) : super(key: key);
 
+  final Color backgroundColor;
   final String image;
   final String foodText;
-  final String time;
-  final bool verify_whichCard;
+  final String kCal;
+  //final bool verify_whichCard;
   Color? textColor;
-  Color? backgroundColor;
 
-  void check(){
+ /* void check(){
     if(verify_whichCard){
       print(verify_whichCard);
       textColor = AppColors.textColorBlack;
@@ -30,11 +32,11 @@ class FoodCardInfo extends StatelessWidget {
       textColor = AppColors.colorWhite;
       backgroundColor = AppColors.mainColor;
     }
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
-    check();
+    //check();
     Size size = MediaQuery.of(context).size;
     return Container(
       margin: EdgeInsets.only(right: 15),
@@ -88,7 +90,7 @@ class FoodCardInfo extends StatelessWidget {
             left: 20,
             child: Container(
               width: size.width * 0.4,
-              child: AppText(text: time,color: textColor!,),
+              child: AppText(text: kCal,color: textColor!,),
             ),
           ),
 

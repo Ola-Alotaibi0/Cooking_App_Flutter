@@ -2,6 +2,7 @@ import 'package:cooking_app/cubit/cubit_blocBuilder.dart';
 import 'package:cooking_app/cubit/cubits.dart';
 import 'package:cooking_app/pages/detail_page.dart';
 import 'package:cooking_app/pages/mainNavPages/main_page.dart';
+import 'package:cooking_app/services/recipes_dataServices.dart';
 import 'package:flutter/material.dart';
 import 'package:cooking_app/pages/welcome_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
       ),
       home: BlocProvider<Cubits>(
-        create: (context) => Cubits(),
+        create: (context) => Cubits(data: RecipesDataServices(),),
         child: CubitBlocBuilder(),
     ),
     );
