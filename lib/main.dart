@@ -1,11 +1,10 @@
-import 'package:cooking_app/cubit/cubit_blocBuilder.dart';
-import 'package:cooking_app/cubit/cubits.dart';
-import 'package:cooking_app/pages/detail_page.dart';
-import 'package:cooking_app/pages/mainNavPages/main_page.dart';
+import 'package:cooking_app/bloc/homeBloc/home_bloc.dart';
+import 'package:cooking_app/bloc/homeBloc/home_events.dart';
+import 'package:cooking_app/recipes_provider.dart';
 import 'package:cooking_app/services/recipes_dataServices.dart';
 import 'package:flutter/material.dart';
-import 'package:cooking_app/pages/welcome_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -17,15 +16,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-      ),
-      home: BlocProvider<Cubits>(
-        create: (context) => Cubits(data: RecipesDataServices(),),
-        child: CubitBlocBuilder(),
-    ),
-    );
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(),
+        home: MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (context) => HomeBloC(RecipesDataServices())..add(WelcomeEvents())),
+          ],
+          child: RecipesProvider(),
+        ));
   }
 }
-

@@ -1,3 +1,6 @@
+import 'package:cooking_app/bloc/homeBloc/home_bloc.dart';
+import 'package:cooking_app/bloc/homeBloc/home_events.dart';
+import 'package:cooking_app/bloc/homeBloc/home_states.dart';
 import 'package:cooking_app/component/colors.dart';
 import 'package:cooking_app/cubit/cubit_states.dart';
 import 'package:cooking_app/cubit/cubits.dart';
@@ -11,39 +14,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
-  List foodInfo = [
-    {
-      "image": "images/foodImg/food2.jpg",
-      "foodText": "Salmon with couscous",
-      "time": "20 min",
-    },
-    {
-      "image": "images/foodImg/food1.jpg",
-      "foodText": "Ramen with shrimp",
-      "time": "20 min",
-    },
-    {
-      "image": "images/foodImg/food3.jpg",
-      "foodText": "Chicken with couscous",
-      "time": "20 min",
-    },
-    {
-      "image": "images/foodImg/food4.jpg",
-      "foodText": "Meat with shrimp",
-      "time": "20 min",
-    }
-
-  ];
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         backgroundColor: AppColors.colorWhite,
-        body: BlocBuilder<Cubits, CubitStates>(
+        body: BlocBuilder<HomeBloC, HomeState>(
           builder: (context, state){
-            if(state is LoadedState){
+            //BlocProvider.of<HomeBloC>(context).emit(LoadedRecipesState(state.))
+            if(state is LoadedRecipesState){
               var info = state.recipes;
-              var cubit = BlocProvider.of<Cubits>(context);
+              var bloC = BlocProvider.of<HomeBloC>(context);
+              print("info.info "+ state.recipes[2].name.toString());
+              final int listleng = info.length;
               return Padding(
                 padding: const EdgeInsets.only(top: 60,left: 30),
                 child: Column(
@@ -75,20 +58,26 @@ class HomePage extends StatelessWidget {
                       color: AppColors.colorWhite,
                       child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: info.length,
+                          itemCount: listleng -2,//info.length,//info.length == null ? null : info.length,
                           itemBuilder: (context, index){
-                            cubit.getCardColors(index);
+                            bloC.getIndex(index);
+                            bloC.getCardColors(index);
+                            //print("info.2 $info.length");
+                            print("list size "+ info.length.toString());
+                            //print(" info[index].name** = "+info[index].name == null ? "hi Home" : info[index].name);
                             return GestureDetector(
                               onTap: (){
-                                cubit.getDetailPage(info[index],index);
+                                bloC.emit(DetailRecipesState(info[index], index));
+                                //bloC.add(DetailRecipesEvents());
+                                //getDetailPage(info[index],index);
                               },
 
                               child: FoodCardInfo(
-                                image: info[index].img[index]!,//foodInfo[index]["image"],
-                                foodText: info[index].name!,
-                                kCal: info[index].kCal.toString(),
-                                backgroundColor: cubit.backgroundCardColors,
-                                textColor: cubit.textCardColors,
+                                image: info[index].img[index] == null ? "img null": info[index].img[index]!,//foodInfo[index]["image"],
+                                foodText: info[index].name == null ? "name null": info[index].name! ,
+                                kCal: info[index].kCal.toString() == null ? "kCal null " : info[index].kCal!.toString(),
+                                backgroundColor: bloC.backgroundCardColors,
+                                textColor: bloC.textCardColors,
 
                               ),
 

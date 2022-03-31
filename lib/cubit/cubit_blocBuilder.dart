@@ -20,7 +20,7 @@ class _CubitBlocBuilderState extends State<CubitBlocBuilder> {
     return Scaffold(
       body: BlocBuilder< Cubits, CubitStates >(
           builder: (context, state){
-            if(state is WelcomeState){
+            if(state is WelcomeState1){
               return WelcomePage();
             }if(state is LoadingState){
               return Center(child: CircularProgressIndicator(),);

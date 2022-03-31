@@ -1,3 +1,6 @@
+import 'package:cooking_app/bloc/homeBloc/home_bloc.dart';
+import 'package:cooking_app/bloc/homeBloc/home_events.dart';
+import 'package:cooking_app/bloc/homeBloc/home_states.dart';
 import 'package:cooking_app/component/colors.dart';
 import 'package:cooking_app/cubit/cubit_states.dart';
 import 'package:cooking_app/cubit/cubits.dart';
@@ -37,11 +40,11 @@ class DetailPage extends StatelessWidget {
     ];
 
     Size size = MediaQuery.of(context).size;
-    return BlocBuilder<Cubits, CubitStates>(
+    return BlocBuilder<HomeBloC, HomeState>(
       builder: (context, state){
-        DetailState detail = state as DetailState;
-        var cubit = BlocProvider.of<Cubits>(context);
-        cubit.getCardColors(detail.index);
+        DetailRecipesState detail = state as DetailRecipesState;
+        var bloC = BlocProvider.of<HomeBloC>(context);
+        bloC.getCardColors(detail.index);
         return Scaffold(
           body: Container(
             height: size.height,
@@ -52,7 +55,7 @@ class DetailPage extends StatelessWidget {
                 Container(
                     width: size.width,
                     height: size.height*0.7,
-                    color: cubit.backgroundCardColors//AppColors.mainColor,
+                    color: bloC.backgroundCardColors//AppColors.mainColor,
                 ),
 
                 Positioned(
@@ -87,9 +90,12 @@ class DetailPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(onPressed: (){
-                        BlocProvider.of<Cubits>(context).returnHome();
-                      }, icon: Icon(Icons.arrow_back_rounded, color: cubit.textCardColors,size: 30,)),
-                      IconButton(onPressed: (){}, icon: Icon(Icons.bookmark_outline_sharp, color: cubit.textCardColors, size: 30,)),
+
+                        //BlocProvider.of<HomeBloC>(context).returnHome();
+                        bloC.add(ReturnToRecipesHomeEvents());
+                      },
+                          icon: Icon(Icons.arrow_back_rounded, color: bloC.textCardColors,size: 30,)),
+                      IconButton(onPressed: (){}, icon: Icon(Icons.bookmark_outline_sharp, color: bloC.textCardColors, size: 30,)),
                     ],
                   ),
                 ),
@@ -146,7 +152,7 @@ class DetailPage extends StatelessWidget {
                         ),
                         SizedBox(height: 30,),
 
-                        AppLargeText(text: detail.recipe.name!),
+                        AppLargeText(text: detail.recipe.name == null ? "hi detail" : detail.recipe.name!),
                         SizedBox(height: 6,),
 
                         AppText(text: detail.recipe.description!,size: 18,color: Colors.black,),

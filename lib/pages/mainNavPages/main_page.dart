@@ -44,10 +44,10 @@ class _MainPageState extends State<MainPage> {
         elevation: 0,
         iconSize: 30,
         items: [
-          BottomNavigationBarItem(title: Text("Home"),icon: Icon(Icons.home,)),
-          BottomNavigationBarItem(title: Text("Search"),icon: Icon(Icons.search,)),
-          BottomNavigationBarItem(title: Text("Basket"),icon: Icon(Icons.shopping_basket_outlined,)),
-          BottomNavigationBarItem(title: Text("Save"),icon: Icon(Icons.bookmark_outline_sharp,))
+          BottomNavigationBarItem(label: "Home",icon: Icon(Icons.home,)),
+          BottomNavigationBarItem(label: "Search",icon: Icon(Icons.search,)),
+          BottomNavigationBarItem(label: "Basket",icon: Icon(Icons.shopping_basket_outlined,)),
+          BottomNavigationBarItem(label: "Save",icon: Icon(Icons.bookmark_outline_sharp,))
         ],
       ),
     );

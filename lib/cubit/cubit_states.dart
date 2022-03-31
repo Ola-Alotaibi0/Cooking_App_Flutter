@@ -4,28 +4,28 @@ import 'package:cooking_app/services/recipes_dataServices.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-abstract class CubitStates extends Equatable{}
+abstract class CubitStates extends Equatable{} // add for all events
 
-class InitialState extends CubitStates{
+class InitialState extends CubitStates{ // add for all events
   @override
   // TODO: implement props
   List<Object> get props => [];
 
 }
 
-class WelcomeState extends CubitStates{
+class WelcomeState1 extends CubitStates{// welcome Page BloCEvent
   @override
   // TODO: implement props
   List<Object> get props => [];
 }
 
-class LoadingState extends CubitStates{
+class LoadingState extends CubitStates{ // Home Page BloCEvent
   @override
   // TODO: implement props
   List<Object> get props => [];
 }
 
-class LoadedState extends CubitStates{
+class LoadedState extends CubitStates{ // Home Page BloCEvent
   LoadedState(this.recipes);
   final List<RecipesDataModel> recipes;
   @override
@@ -33,7 +33,7 @@ class LoadedState extends CubitStates{
   List<Object> get props => [recipes];
 }
 
-class DetailState extends CubitStates{
+class DetailState extends CubitStates{ // Detail Page BloCEvent
   DetailState(this.recipe, this.index);
   final RecipesDataModel recipe;
   final int index;

@@ -5,17 +5,17 @@ import 'package:cooking_app/model/recipes_dataModel.dart';
 import 'package:cooking_app/services/recipes_dataServices.dart';
 import 'package:flutter/material.dart';
 
-class Cubits extends Cubit<CubitStates>{
-  Cubits({required this.data}) : super(InitialState()){
-    emit(WelcomeState());
+class Cubits extends Cubit<CubitStates>{ // add for all BloC Pages
+  Cubits({required this.data}) : super(InitialState()){ // add for all BloC Pages
+    emit(WelcomeState1()); // add for all BloC Pages
   }
 
-  final RecipesDataServices data;
-  late final recipes;
-  Color backgroundCardColors = AppColors.mainColor;
-  Color textCardColors = AppColors.colorWhite;
+  final RecipesDataServices data; // Home State Page
+  late final recipes; // Home State Page
+  Color backgroundCardColors = AppColors.mainColor; // For Home and detaile State Page
+  Color textCardColors = AppColors.colorWhite; // For Home and detaile State Page
 
-  void getData() async{
+  void getData() async{ // Home State Page
     try{
       emit(LoadingState());
       recipes = await data.getRecipesInfo();// all packge as List RecipesDataModel
@@ -25,16 +25,16 @@ class Cubits extends Cubit<CubitStates>{
     }
   }
 
-  void getDetailPage(RecipesDataModel data, int index){
+  void getDetailPage(RecipesDataModel data, int index){ // Detail State Page
     emit(DetailState(data, index));
   }
 
-  void returnHome(){
+  void returnHome(){ // Home State Page
     emit(LoadedState(recipes));
   }
 
 
-  void getCardColors(int index){
+  void getCardColors(int index){ // For Home and detaile State Page
     backgroundCardColors = index % 2 == 0 ? AppColors.greyBackgroundColor : AppColors.mainColor;
     textCardColors = index % 2 == 0 ? AppColors.textColorBlack : AppColors.colorWhite;
 

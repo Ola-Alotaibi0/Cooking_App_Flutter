@@ -10,24 +10,12 @@ class RecipesDataModel {
   var img;
 
   RecipesDataModel({
-     this.name,
-     this.description,
-     this.kCal,
-     this.ingredients,
-    this.img ,
-
-});
-
-  /*factory RecipesDataModel.fromJson(Map<String, dynamic> json){
-
-    return RecipesDataModel(
-        name: json["name"],
-        description: json["description"],
-        kCal: json["kCal"],
-        ingredients: json["ingredients"],
-    );
-
-  }*/
+    this.name,
+    this.description,
+    this.kCal,
+    this.ingredients,
+    this.img,
+  });
 
   RecipesDataModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
@@ -43,31 +31,23 @@ class RecipesDataModel {
         "images/foodImg/food2.jpg",
         "images/foodImg/food1.jpg",
         "images/foodImg/food3.jpg",
-        "images/foodImg/food4.jpg"
+        //"images/foodImg/food4.jpg"
       ];
-
     }
-
   }
-
 }
 
-class Ingredients{
+class Ingredients {
   String? name;
   String? quantity;
   var img;
 
   Ingredients({
-     this.name,
-     this.quantity,
+    this.name,
+    this.quantity,
     this.img,
   });
 
-  /*factory Ingredients1.fromJason(Map<String,dynamic> json){
-    return Ingredients1(
-        name: json["name"]!,
-        quantity: json["quantity"]!);
-  }*/
   Ingredients.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     quantity = json['quantity'];
@@ -80,6 +60,3 @@ class Ingredients{
     ];
   }
 }
-//=====================================================
-
-
