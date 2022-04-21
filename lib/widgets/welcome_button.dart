@@ -1,6 +1,5 @@
 import 'package:cooking_app/component/colors.dart';
 import 'package:cooking_app/widgets/app_large_text.dart';
-import 'package:cooking_app/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {

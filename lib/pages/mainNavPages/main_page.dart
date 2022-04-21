@@ -1,25 +1,31 @@
+import 'package:cooking_app/bloc/authBloc/authentication_bloc.dart';
 import 'package:cooking_app/component/colors.dart';
 import 'package:cooking_app/pages/mainNavPages/basket_page.dart';
 import 'package:cooking_app/pages/home_page.dart';
 import 'package:cooking_app/pages/mainNavPages/save_page.dart';
 import 'package:cooking_app/pages/mainNavPages/search_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+  AuthenticationBloc authenticationBloc;
+  MainPage({Key? key, required this.authenticationBloc}) : super(key: key);
 
   @override
   State<MainPage> createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
-  List pages = [
-    HomePage(),
-    SearchPage(),
-    BasketPage(),
-    SavePage(),
-  ];
+  late AuthenticationBloc authenticationBloc;
+
+  @override
+  void initState() {
+    authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
+    super.initState();
+  }
+
+
 
   int bottomNavigationBarIndex = 0;
   void onTap(int index){
@@ -29,6 +35,12 @@ class _MainPageState extends State<MainPage> {
   }
   @override
   Widget build(BuildContext context) {
+    List pages = [
+      HomePageParent(authenticationBloc: authenticationBloc),
+      SearchPage(),
+      BasketPage(),
+      SavePage(),
+    ];
     return Scaffold(
       backgroundColor: AppColors.colorWhite,
       body: pages[bottomNavigationBarIndex],

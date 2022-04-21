@@ -16,26 +16,26 @@ class RecipesProvider extends StatelessWidget {
     return Scaffold(
       body: BlocBuilder<HomeBloC, HomeState>(
         builder: (context, state) {
-          if (state is WelcomeState) {
+          /*if (state is WelcomeState) {
             return WelcomePage();
           }
           if (state is LoginState) {
-            return LoginPage();
-          }
-          if (state is RegistrationState) {
+            return Center(child: Text(" error "),);//LoginPage();
+          }*/
+          /*if (state is RegistrationState) {
             return RegistrationPage();
-          }
+          }*/
           if (state is LoadingRecipesState) {
             return Center(
               child: CircularProgressIndicator(),
             );
           }
-          if (state is LoadedRecipesState) {
+         /* if (state is LoadedRecipesState) {
             return MainPage();
-          }
-          if (state is DetailRecipesState) {
+          }*/
+          /*if (state is DetailRecipesState) {
             return DetailPage();
-          } else {
+          }*/ else {
             return Container();
           }
         },

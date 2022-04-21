@@ -1,6 +1,3 @@
-import 'dart:convert';
-
-import 'package:http/http.dart' as http;
 
 class RecipesDataModel {
   String? name;
@@ -31,7 +28,6 @@ class RecipesDataModel {
         "images/foodImg/food2.jpg",
         "images/foodImg/food1.jpg",
         "images/foodImg/food3.jpg",
-        //"images/foodImg/food4.jpg"
       ];
     }
   }

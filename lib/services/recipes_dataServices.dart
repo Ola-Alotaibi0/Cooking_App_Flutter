@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:cooking_app/model/recipes_dataModel.dart';
 import 'package:http/http.dart' as http;
 
@@ -14,11 +13,11 @@ class RecipesDataServices {
         List<dynamic> list = map["recipes"];
         return list.map((e) => RecipesDataModel.fromJson(e)).toList();
       } else {
-        print("else");
+        print("Error RecipesDataServices");
         return <RecipesDataModel>[];
       }
     } catch (e) {
-      print("error");
+      print("Error RecipesDataServices");
       print(e);
       return <RecipesDataModel>[];
     }

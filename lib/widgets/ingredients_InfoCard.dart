@@ -5,44 +5,52 @@ import 'package:flutter/material.dart';
 class IngredientsInfoCard extends StatelessWidget {
   const IngredientsInfoCard({
     Key? key,
+    required this.contentSize_WhiteContainer,
     required this.image,
     required this.ingredientName,
     required this.ingredientQuantity,
   }) : super(key: key);
 
+  final contentSize_WhiteContainer;
   final String image;
   final String ingredientName;
   final String ingredientQuantity;
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Container(
-      padding: EdgeInsets.only(bottom: 15),
+      padding: EdgeInsets.only(bottom: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-
           Row(
             children: [
               Container(
-                height: size.width*0.15,
-                width: size.width*0.15,
-
+                height: contentSize_WhiteContainer * 7,
+                width: contentSize_WhiteContainer * 7,
                 decoration: BoxDecoration(
                     color: AppColors.greyBackgroundColor,
                     borderRadius: BorderRadius.circular(15),
                     image: DecorationImage(
                       image: AssetImage(image),
                       fit: BoxFit.cover,
-                    )
-                ),
+                    )),
               ),
-              SizedBox(width: 16,),
-              AppText(text: ingredientName, color: AppColors.textColorBlack,size: 18,),
+              SizedBox(
+                width: 16,
+              ),
+              AppText(
+                text: ingredientName,
+                color: AppColors.textColorBlack,
+                size: contentSize_WhiteContainer * 2,
+              ),
             ],
           ),
-          AppText(text: ingredientQuantity, color: AppColors.textColorGrey,size: 18,),
+          AppText(
+            text: ingredientQuantity,
+            color: AppColors.textColorGrey,
+            size: contentSize_WhiteContainer * 2,
+          ),
         ],
       ),
     );

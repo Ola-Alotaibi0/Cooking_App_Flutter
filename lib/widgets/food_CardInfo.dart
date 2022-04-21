@@ -1,6 +1,4 @@
-import 'package:cooking_app/component/colors.dart';
 import 'package:flutter/material.dart';
-
 import 'app_large_text.dart';
 import 'app_text.dart';
 
@@ -12,7 +10,6 @@ class FoodCardInfo extends StatelessWidget {
     required this.kCal,
     required this.backgroundColor,
     this.textColor = Colors.white,
-    //required this.verify_whichCard,
   }) : super(key: key);
 
   final Color backgroundColor;
@@ -23,39 +20,48 @@ class FoodCardInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     Size size = MediaQuery.of(context).size;
+    var heightCard = size.height * 0.5;
+    var widthCard = size.width * 0.4;
+
     return Container(
       margin: EdgeInsets.only(right: 15),
-      height: size.height * 0.55,
-      width: size.width * 0.5,
+      width: widthCard,
+      height: heightCard,
       decoration: BoxDecoration(
         color: backgroundColor,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(15),
       ),
+      clipBehavior: Clip.antiAlias,
       child: Stack(
-        overflow: Overflow.clip,
         children: [
+
           Positioned(
-            top: -10,
-            left: 20,
+            top: -30,
+            left: 30,
             child: Container(
-              height: 350,
-              width: 350,
+              height: ((widthCard + heightCard)/100) * 50,
+              width: ((widthCard + heightCard)/100) * 50,
+
               decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white,
+                image: DecorationImage(
+                  image:  AssetImage(image),
+                  fit: BoxFit.cover,
+                  ),
+
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black12,
-                    spreadRadius: 8,
-                    blurRadius: 10,
+                      color: Colors.black45,
+                      blurRadius: 15,
+                      offset: Offset(5.0, 5.0),
                   ),
                 ],
-                borderRadius: BorderRadius.circular(200),
-                image: DecorationImage(
-                  image: AssetImage(image),
-                  fit: BoxFit.cover,
-                ),
               ),
-            ),
+            )
+
           ),
           Positioned(
             bottom: 60,
@@ -64,7 +70,7 @@ class FoodCardInfo extends StatelessWidget {
               width: size.width * 0.4,
               child: AppLargeText(
                 text: foodText,
-                size: 22,
+                size: ((widthCard + heightCard)/100) * 3,
                 color: textColor!,
               ),
             ),
@@ -73,9 +79,10 @@ class FoodCardInfo extends StatelessWidget {
             bottom: 30,
             left: 20,
             child: Container(
-              width: size.width * 0.4,
+              width: widthCard * 0.5,
               child: AppText(
                 text: kCal,
+                size: ((widthCard + heightCard)/100) * 2.5,
                 color: textColor!,
               ),
             ),
